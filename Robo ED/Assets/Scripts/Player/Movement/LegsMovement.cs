@@ -14,7 +14,7 @@ public class LegsMovement : MonoBehaviour
 
     [Header("Jumping")]
     [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform[] groundCheck;
     [SerializeField] private LayerMask whatIsGround;
     public bool isGrounded = true;
 
@@ -28,15 +28,15 @@ public class LegsMovement : MonoBehaviour
         input.x = Input.GetAxis("Horizontal") * moveSpeed;
 
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
-            input.y = jumpForce;
-            Debug.Log("Pulando... " + input.y);
+            //input.y = jumpForce;
+            Jump();
         }
-        else if(!isGrounded)
-            input.y = 0f;
+        else if(!isGrounded && input.y > 0f)
+            input.y -= Time.deltaTime * 100f;
     }
 
     private void FixedUpdate() {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.4f, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(groundCheck[0].position, 0.4f, whatIsGround) || Physics2D.OverlapCircle(groundCheck[1].position, 0.4f, whatIsGround);
 
         rb.AddForce(input * 1000f * Time.deltaTime, ForceMode2D.Force);
 
@@ -44,4 +44,12 @@ public class LegsMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
         
     }
+
+    private void Jump(){
+        if(input.y <= jumpForce){
+            input.y += Time.deltaTime;
+            Jump();
+        }
+        else return;
+    } 
 }
