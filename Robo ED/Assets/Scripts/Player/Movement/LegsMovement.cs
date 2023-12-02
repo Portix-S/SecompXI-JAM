@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 
 public class LegsMovement : MonoBehaviour
 {
     public GameObject legs;
     private Animator legsAnimator;
+
+    [SerializeField] private SpriteRenderer[] bodySprites;
+    private bool isFacingRight = true;
 
     [Header("Leg Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -33,6 +37,27 @@ public class LegsMovement : MonoBehaviour
         }
         else if(!isGrounded && input.y > 0f)
             input.y -= Time.deltaTime * 100f;
+
+        // Handles sprite flip
+        if(input.x < 0f && isFacingRight){
+            foreach(SpriteRenderer sprite in bodySprites){
+                sprite.flipX = true;
+            }
+            isFacingRight = !isFacingRight;
+        }
+        else if(input.x > 0f && !isFacingRight){
+            foreach(SpriteRenderer sprite in bodySprites){
+                sprite.flipX = false;
+            }
+            isFacingRight = !isFacingRight;
+        }
+            
+        // Handles Animator
+        if(input.x != 0f && isGrounded){
+            legsAnimator.SetBool("isWalking", true);
+        }
+        else legsAnimator.SetBool("isWalking", false);
+
     }
 
     private void FixedUpdate() {
