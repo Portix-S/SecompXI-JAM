@@ -38,8 +38,9 @@ public class LegsMovement : MonoBehaviour
     private void FixedUpdate() {
         isGrounded = Physics2D.OverlapCircle(groundCheck[0].position, 0.4f, whatIsGround) || Physics2D.OverlapCircle(groundCheck[1].position, 0.4f, whatIsGround);
 
-        rb.AddForce(input * 1000f * Time.deltaTime, ForceMode2D.Force);
-
+        rb.AddForce(input * (100f * Time.deltaTime), ForceMode2D.Force);
+        // rb.AddForce(new Vector2(0f,(input.y * (1000f * Time.deltaTime))), ForceMode2D.Force);
+        // rb.velocity = new Vector2(input.x * Time.deltaTime, rb.velocity.y);
         if ((rb.velocity.x > 0 && input.x < 0) || (rb.velocity.x < 0 && input.x > 0))
             rb.velocity = Vector2.zero;
         
