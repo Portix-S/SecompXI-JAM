@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using Update = Unity.VisualScripting.Update;
 using Vector2 = System.Numerics.Vector2;
 
@@ -29,6 +30,40 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        SceneManager.sceneLoaded += Warmup;
+        
+        initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
+        player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
+
+        Transform cam = player.transform.Find("PlayerFollow").transform;
+        Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
+        Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().Follow = cam;
+        RotationConstraint rotationConstraint = player.GetComponentInChildren<RotationConstraint>();
+        Transform rotationSource = GameObject.FindGameObjectWithTag("Constraint").transform;
+        rotationConstraint.AddSource(new ConstraintSource() {sourceTransform = rotationSource, weight = 1});
+
+        player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
+
+        headMovement = player.GetComponent<HeadMovement>();
+        legsMovement = player.GetComponent<LegsMovement>();
+        armsMovement = player.GetComponent<ArmsMovement>();
+        torso = player.GetComponent<Torso>();
+
+        // headMovement.head.SetActive(true);
+        // legsMovement.legs.SetActive(false);
+        // armsMovement.arms.SetActive(false);
+        // torso.torso.SetActive(false);
+        
+        headMovement.enabled = true;
+        legsMovement.enabled = false;
+        armsMovement.enabled = false;
+        torso.enabled = false;
+        UpdateParts();
+
+        playerRb = player.GetComponent<Rigidbody2D>();
+    }
+
+    private void Warmup(Scene scene, LoadSceneMode loadMode){
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
         player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
 

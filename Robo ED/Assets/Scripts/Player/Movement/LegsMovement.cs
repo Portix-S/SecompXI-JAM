@@ -71,6 +71,15 @@ public class LegsMovement : MonoBehaviour
 
     private void FixedUpdate() {
         isGrounded = Physics2D.OverlapCircle(groundCheck[0].position, 0.2f, whatIsGround) || Physics2D.OverlapCircle(groundCheck[1].position, 0.2f, whatIsGround);
+        if(isGrounded && rb.velocity.y <= 0){
+            legsAnimator.SetBool("isJumping", false);
+        }
+        if(!isGrounded && rb.velocity.y <= 0){
+            legsAnimator.SetBool("isJumping", false);
+        }
+        if(!isGrounded && rb.velocity.y > 0){
+            legsAnimator.SetBool("isJumping", true);
+        }
 
         // rb.AddForce(input * (1000f * Time.deltaTime), ForceMode2D.Force);
         rb.AddForce(new Vector2(0f,(input.y * (1000f * Time.deltaTime))), ForceMode2D.Force);

@@ -30,7 +30,8 @@ public class Torso : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space) && !legsRef.isGrounded && rb.velocity.y <= Mathf.Epsilon){
+        if(Input.GetKeyDown(KeyCode.Space) && !legsRef.isGrounded){
+            rb.velocity = Vector2.zero;
             rb.gravityScale = floatG;
         }
 

@@ -65,7 +65,7 @@ public class ArmsMovement : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Ladder"))
+        if (other.CompareTag("Ladder") && this.enabled == true)
         {
             isOnLadder = false;
             isClimbing = false;
