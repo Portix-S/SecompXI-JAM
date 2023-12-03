@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("UpdateRespawn"))
         {
             UpdateRespawnPosition(other.transform);
-            Destroy(other.gameObject);
+         //   Destroy(other.gameObject);
         }
     }
     

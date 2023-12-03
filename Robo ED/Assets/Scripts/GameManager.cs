@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         Transform rotationSource = GameObject.FindGameObjectWithTag("Constraint").transform;
         rotationConstraint.AddSource(new ConstraintSource() {sourceTransform = rotationSource, weight = 1});
 
+        playerRb = player.GetComponent<Rigidbody2D>();
         player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
 
         headMovement = player.GetComponent<HeadMovement>();
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
         torso.enabled = false;
         UpdateParts();
 
-        playerRb = player.GetComponent<Rigidbody2D>();
+       
     }
 
     private void Warmup(Scene scene, LoadSceneMode loadMode){
@@ -75,7 +76,8 @@ public class GameManager : MonoBehaviour
         RotationConstraint rotationConstraint = player.GetComponentInChildren<RotationConstraint>();
         Transform rotationSource = GameObject.FindGameObjectWithTag("Constraint").transform;
         rotationConstraint.AddSource(new ConstraintSource() {sourceTransform = rotationSource, weight = 1});
-
+        
+        playerRb = player.GetComponent<Rigidbody2D>();
         player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
 
         headMovement = player.GetComponent<HeadMovement>();
@@ -94,13 +96,13 @@ public class GameManager : MonoBehaviour
         torso.enabled = false;
         UpdateParts();
 
-        playerRb = player.GetComponent<Rigidbody2D>();
+        
     }
 
     private void Update()
     {
         rbVelocity = playerRb.velocity.x;
-        parallaxSpeed = rbVelocity * .002f;
+        parallaxSpeed = rbVelocity * .001f;
     }
 
     public void RestorePart()

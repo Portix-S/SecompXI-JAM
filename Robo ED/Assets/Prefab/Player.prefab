@@ -109,7 +109,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 10
-  m_AngularDrag: 0.5
+  m_AngularDrag: 1
   m_GravityScale: 9.81
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 775947237814164870}
-  speed: 1500
+  speed: 4000
 --- !u!114 &1675532517767116698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   - {fileID: 402435301708944982}
   - {fileID: 8724290255489431215}
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 20
   groundCheck:
   - {fileID: 3410106959562160849}
   - {fileID: 1235588884404947880}
