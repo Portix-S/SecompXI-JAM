@@ -7,7 +7,9 @@ TagManager:
   - UpdateRespawn
   - Ladder
   - GameManager
+  - Trap
   - Spawn
+  - Constraint
   layers:
   - Default
   - TransparentFX
