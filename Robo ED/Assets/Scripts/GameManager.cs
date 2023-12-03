@@ -20,16 +20,25 @@ public class GameManager : MonoBehaviour
     private float rbVelocity;
 
     public float parallaxSpeed;
-    // Start is called before the first frame update
+
     void Start()
     {
         headMovement = player.GetComponent<HeadMovement>();
         legsMovement = player.GetComponent<LegsMovement>();
-        // armsMovement = player.GetComponent<ArmsMovement>();
-        // torso = player.GetComponent<Torso>();
+        armsMovement = player.GetComponent<ArmsMovement>();
+        torso = player.GetComponent<Torso>();
+
+        headMovement.head.SetActive(true);
+        legsMovement.legs.SetActive(false);
+        armsMovement.arms.SetActive(false);
+        torso.torso.SetActive(false);
+        
+        headMovement.enabled = true;
         legsMovement.enabled = false;
-        // armsMovement.enabled = false;
-        // torso.enabled = false;
+        armsMovement.enabled = false;
+        torso.enabled = false;
+        UpdateParts();
+
         playerRb = player.GetComponent<Rigidbody2D>();
     }
 
@@ -43,18 +52,24 @@ public class GameManager : MonoBehaviour
     {
         player.transform.eulerAngles = Vector3.zero;
         partsCollected++;
-        switch (partsCollected)
-        {
-            case 1:
-                headMovement.enabled = false;
-                legsMovement.enabled = true;
-                break;
-            case 2:
-                torso.enabled = true;
-                break;
-            case 3:
-                armsMovement.enabled = true;
-                break;
+        UpdateParts();
+    }
+
+    private void UpdateParts(){
+        for(int i = 1; i <= partsCollected; i++){
+            switch (partsCollected)
+            {
+                case 1:
+                    headMovement.enabled = false;
+                    legsMovement.enabled = true;
+                    break;
+                case 2:
+                    torso.enabled = true;
+                    break;
+                case 3:
+                    armsMovement.enabled = true;
+                    break;
+            }
         }
     }
 }

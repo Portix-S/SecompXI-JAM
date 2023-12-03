@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ArmsMovement : MonoBehaviour
 {
+    public GameObject arms;
     private Rigidbody2D rb;
     private float baseGravity;
 
@@ -20,6 +21,8 @@ public class ArmsMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         baseGravity = rb.gravityScale;
+
+        arms.SetActive(true);
     }
 
     // Update is called once per frame
@@ -38,10 +41,10 @@ public class ArmsMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, input * climbSpeed);
             rb.gravityScale = 0;
         }
-        else
-        {
-            rb.gravityScale = baseGravity;
-        }
+        // else
+        // {
+        //     rb.gravityScale = baseGravity;
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -58,6 +61,7 @@ public class ArmsMovement : MonoBehaviour
         {
             isOnLadder = false;
             isClimbing = false;
+            rb.gravityScale = baseGravity;
         }
     }
 }

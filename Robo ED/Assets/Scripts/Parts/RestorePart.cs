@@ -6,7 +6,7 @@ using UnityEngine;
 public class RestorePart : MonoBehaviour
 {
     private GameManager _gm;
-    private float delayToCall = 1f;
+    [SerializeField] private float delayToCall = 1f;
     bool hasRestored = false;
     private void Start()
     {

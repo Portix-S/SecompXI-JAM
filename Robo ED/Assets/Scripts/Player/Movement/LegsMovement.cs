@@ -27,6 +27,7 @@ public class LegsMovement : MonoBehaviour
         input = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
         legsAnimator = legs.GetComponent<Animator>();
+        
         rb.freezeRotation = true;
         legs.SetActive(true);
     }
