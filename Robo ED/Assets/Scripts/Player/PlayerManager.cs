@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     public void UpdateRespawnPosition(Transform newRespawnPosition)
     {
         respawnPosition = newRespawnPosition;
-        //respawnPosition.position = newRespawnPosition.position;
+        // respawnPosition.position = newRespawnPosition.position;
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +36,11 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("Trap"))
         {
             Respawn();
+        }
+        if (other.CompareTag("UpdateRespawn"))
+        {
+            UpdateRespawnPosition(other.transform);
+         //   Destroy(other.gameObject);
         }
     }
     

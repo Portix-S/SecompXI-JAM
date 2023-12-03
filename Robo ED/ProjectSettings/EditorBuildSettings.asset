@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: c142fba039394040e97aa96914967b3d
+  - enabled: 1
     path: Assets/Scenes/Fase1 Parallax.unity
     guid: 427649617998de14386a1b620448248a
   - enabled: 1
     path: Assets/Scenes/Fase2.unity
     guid: e72dd684a32aebf4ca1864bc2cd1c25b
+  - enabled: 1
+    path: Assets/Scenes/Fase3.unity
+    guid: f1bd04f709e5b254092689f86fc260f7
   m_configObjects: {}
