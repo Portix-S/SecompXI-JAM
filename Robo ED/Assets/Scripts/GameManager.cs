@@ -25,18 +25,18 @@ public class GameManager : MonoBehaviour
     {
         headMovement = player.GetComponent<HeadMovement>();
         legsMovement = player.GetComponent<LegsMovement>();
-        // armsMovement = player.GetComponent<ArmsMovement>();
-        // torso = player.GetComponent<Torso>();
+        armsMovement = player.GetComponent<ArmsMovement>();
+        torso = player.GetComponent<Torso>();
 
         headMovement.head.SetActive(true);
         legsMovement.legs.SetActive(false);
-        // armsMovement.arms.SetActive(false);
-        // torso.torso.SetActive(false);
+        armsMovement.arms.SetActive(false);
+        torso.torso.SetActive(false);
         
         headMovement.enabled = true;
         legsMovement.enabled = false;
-        // armsMovement.enabled = false;
-        // torso.enabled = false;
+        armsMovement.enabled = false;
+        torso.enabled = false;
         UpdateParts();
 
         playerRb = player.GetComponent<Rigidbody2D>();
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
             switch (partsCollected)
             {
                 case 1:
+                    playerRb.angularDrag = 1f;
                     headMovement.enabled = false;
                     legsMovement.enabled = true;
                     break;
