@@ -67,8 +67,10 @@ public class GameManager : MonoBehaviour
 
     private void Warmup(Scene scene, LoadSceneMode loadMode){
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
-        player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);  
+        player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
+
         currentScene = SceneManager.GetActiveScene().buildIndex;
+
         Transform cam = player.transform.Find("PlayerFollow").transform;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().Follow = cam;
@@ -77,24 +79,18 @@ public class GameManager : MonoBehaviour
         rotationConstraint.AddSource(new ConstraintSource() {sourceTransform = rotationSource, weight = 1});
 
         player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
+        playerRb = player.GetComponent<Rigidbody2D>();
 
         headMovement = player.GetComponent<HeadMovement>();
         legsMovement = player.GetComponent<LegsMovement>();
         armsMovement = player.GetComponent<ArmsMovement>();
         torso = player.GetComponent<Torso>();
-
-        // headMovement.head.SetActive(true);
-        // legsMovement.legs.SetActive(false);
-        // armsMovement.arms.SetActive(false);
-        // torso.torso.SetActive(false);
         
         headMovement.enabled = true;
         legsMovement.enabled = false;
         armsMovement.enabled = false;
         torso.enabled = false;
         UpdateParts();
-
-        playerRb = player.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -120,7 +116,7 @@ public class GameManager : MonoBehaviour
                     legsMovement.enabled = true;
                     break;
                 case 2:
-                    legsMovement.jumpForce *= 1.2f;
+                    //legsMovement.jumpForce *= 1.2f;
                     torso.enabled = true;
                     break;
                 case 3:

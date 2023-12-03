@@ -25,10 +25,6 @@ public class ArmsMovement : MonoBehaviour
         arms.SetActive(true);
     }
 
-    private void OnEnable() {
-        arms.SetActive(true);
-    }
-
     private void OnDisable() {
         arms.SetActive(false);
     }
