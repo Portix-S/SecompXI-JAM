@@ -25,6 +25,14 @@ public class ArmsMovement : MonoBehaviour
         arms.SetActive(true);
     }
 
+    private void OnEnable() {
+        arms.SetActive(true);
+    }
+
+    private void OnDisable() {
+        arms.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {

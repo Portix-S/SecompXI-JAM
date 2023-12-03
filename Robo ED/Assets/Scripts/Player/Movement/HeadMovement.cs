@@ -13,12 +13,10 @@ public class HeadMovement : MonoBehaviour
 
     [SerializeField] float speed = 10f;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponentInParent<Rigidbody2D>();
         rb.freezeRotation = false;
-
-        head.SetActive(true);
     }
 
     // Update is called once per frame

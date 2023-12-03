@@ -25,6 +25,10 @@ public class Torso : MonoBehaviour
         legsRef.legs.transform.position = newLegsPos.position;
     }
 
+    private void OnDisable() {
+        torso.SetActive(false);
+    }
+
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space) && !legsRef.isGrounded){
             rb.gravityScale = floatG;

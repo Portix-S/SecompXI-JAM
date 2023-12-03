@@ -6,7 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] Transform respawnPosition;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +20,8 @@ public class PlayerManager : MonoBehaviour
     
     public void UpdateRespawnPosition(Transform newRespawnPosition)
     {
-        respawnPosition.transform.position = newRespawnPosition.position;
+        respawnPosition = newRespawnPosition;
+        //respawnPosition.position = newRespawnPosition.position;
     }
     
     // private void OnTriggerEnter2D(Collider2D other)
