@@ -840,6 +840,7 @@ MonoBehaviour:
   jumpForce: 20
   groundCheck:
   - {fileID: 512618837}
+  - {fileID: 1958636295}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8

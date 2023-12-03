@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   legs: {fileID: 1545569814}
-  moveSpeed: 300
+  moveSpeed: 4
   jumpForce: 10
   groundCheck:
   - {fileID: 1710826079}

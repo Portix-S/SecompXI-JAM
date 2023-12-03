@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
@@ -26,6 +27,12 @@ public class LegsMovement : MonoBehaviour
         input = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
         legsAnimator = legs.GetComponent<Animator>();
+        rb.freezeRotation = true;
+        legs.SetActive(true);
+    }
+
+    private void Awake()
+    {
     }
 
     private void Update() {
