@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - Trap
   - Spawn
+  - Constraint
   layers:
   - Default
   - TransparentFX

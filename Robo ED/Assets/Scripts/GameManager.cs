@@ -1,9 +1,10 @@
-using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
 using Update = Unity.VisualScripting.Update;
 using Vector2 = System.Numerics.Vector2;
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
         Transform cam = player.transform.Find("PlayerFollow").transform;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().Follow = cam;
+        RotationConstraint rotationConstraint = player.GetComponentInChildren<RotationConstraint>();
+        Transform rotationSource = GameObject.FindGameObjectWithTag("Constraint").transform;
+        rotationConstraint.AddSource(new ConstraintSource() {sourceTransform = rotationSource, weight = 1});
 
         player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
 

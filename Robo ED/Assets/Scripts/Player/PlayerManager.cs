@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,6 +7,11 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] Transform respawnPosition;
+
+    private void Start()
+    {
+        respawnPosition = GameObject.FindGameObjectWithTag("Spawn").transform;
+    }
 
     // Update is called once per frame
     void Update()

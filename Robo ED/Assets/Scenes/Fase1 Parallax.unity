@@ -1788,7 +1788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325418770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.29707336, z: 10}
+  m_LocalPosition: {x: 0, y: -0.71066666, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1914,11 +1914,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &344365962 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 775947237814164870, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
-  m_PrefabInstance: {fileID: 8508849975197053959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409766692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,7 +2209,7 @@ GameObject:
   - component: {fileID: 479177749}
   m_Layer: 0
   m_Name: Respawn
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2611,7 +2606,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8333333, y: 0.5}
+    oldSize: {x: 0.5714286, y: 0.34285715}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2701,7 +2696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a929cc466808b469fc284c31cfe3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 344365962}
+  playerPrefab: {fileID: 775947237814164870, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+  initialPos: {fileID: 479177749}
   partsCollected: 0
   parallaxSpeed: 0
 --- !u!4 &631536564
@@ -3655,7 +3651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.4570723, z: -10}
+  m_LocalPosition: {x: 0, y: 4.8706636, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4582,7 +4578,7 @@ GameObject:
   - component: {fileID: 1150429237}
   m_Layer: 3
   m_Name: RotationConstraint
-  m_TagString: Untagged
+  m_TagString: Constraint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
