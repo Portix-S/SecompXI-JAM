@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeadMovement : MonoBehaviour
 {
+    public GameObject head;
     Rigidbody2D rb;
 
     private float input;
@@ -14,6 +16,9 @@ public class HeadMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
+        rb.freezeRotation = false;
+
+        head.SetActive(true);
     }
 
     // Update is called once per frame
