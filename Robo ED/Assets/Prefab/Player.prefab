@@ -201,6 +201,7 @@ MonoBehaviour:
   - {fileID: 8609555849238451326}
   - {fileID: 1421229867541072412}
   - {fileID: 402435301708944982}
+  - {fileID: 8724290255489431215}
   moveSpeed: 4
   jumpForce: 10
   groundCheck:

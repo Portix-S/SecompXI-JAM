@@ -3382,6 +3382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6852880921808838620, guid: f60769ead423f174194e55dc42d600a7, type: 3}
+      propertyPath: delayToCall
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6896365468009643196, guid: f60769ead423f174194e55dc42d600a7, type: 3}
       propertyPath: m_Name
       value: RestorePart
