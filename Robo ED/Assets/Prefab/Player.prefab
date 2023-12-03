@@ -154,7 +154,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: -0.03, y: 0.43}
   serializedVersion: 2
   m_Radius: 0.6
 --- !u!114 &2754508598460801593
@@ -203,7 +203,7 @@ MonoBehaviour:
   - {fileID: 402435301708944982}
   - {fileID: 8724290255489431215}
   moveSpeed: 5
-  jumpForce: 15
+  jumpForce: 10
   groundCheck:
   - {fileID: 3410106959562160849}
   - {fileID: 1235588884404947880}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775947237814164870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1a32117c7fd9744bbd486b24ce99d7, type: 3}
   m_Name: 
@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 3447884240225798337}
   - component: {fileID: 1421229867541072412}
   - component: {fileID: 2181003356447914401}
+  - component: {fileID: 3352603151101234962}
   m_Layer: 0
   m_Name: Torso
   m_TagString: Untagged
@@ -570,6 +571,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.92807215, y: 1.1806632}
   m_EdgeRadius: 0
+--- !u!95 &3352603151101234962
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6695032775146514353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e706b175a239e64bb478f5851f8ab89, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7138322543081722974
 GameObject:
   m_ObjectHideFlags: 0

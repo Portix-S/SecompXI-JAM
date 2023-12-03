@@ -18,7 +18,7 @@ public class LegsMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Jumping")]
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] public float jumpForce = 10f;
     [SerializeField] private Transform[] groundCheck;
     [SerializeField] private LayerMask whatIsGround;
     public bool isGrounded = true;

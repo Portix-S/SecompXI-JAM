@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     private float rbVelocity;
 
     public float parallaxSpeed;
+    
+    private int currentScene = 0;
 
     void Start()
     {
@@ -65,8 +67,8 @@ public class GameManager : MonoBehaviour
 
     private void Warmup(Scene scene, LoadSceneMode loadMode){
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
-        player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
-
+        player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);  
+        currentScene = SceneManager.GetActiveScene().buildIndex;
         Transform cam = player.transform.Find("PlayerFollow").transform;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().Follow = cam;
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         rbVelocity = playerRb.velocity.x;
-        parallaxSpeed = rbVelocity * .01f;
+        parallaxSpeed = rbVelocity * .002f;
     }
 
     public void RestorePart()
@@ -118,6 +120,7 @@ public class GameManager : MonoBehaviour
                     legsMovement.enabled = true;
                     break;
                 case 2:
+                    legsMovement.jumpForce *= 1.2f;
                     torso.enabled = true;
                     break;
                 case 3:
@@ -125,5 +128,12 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void ChangeScene()
+    {
+        currentScene++;
+        // Add Animation?
+        SceneManager.LoadScene(currentScene);
     }
 }
