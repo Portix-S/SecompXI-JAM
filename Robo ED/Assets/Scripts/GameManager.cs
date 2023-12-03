@@ -42,10 +42,11 @@ public class GameManager : MonoBehaviour
         armsMovement = player.GetComponent<ArmsMovement>();
         torso = player.GetComponent<Torso>();
 
-        // headMovement.head.SetActive(true);
-        // legsMovement.legs.SetActive(false);
-        // armsMovement.arms.SetActive(false);
-        // torso.torso.SetActive(false);
+        headMovement.head.SetActive(true);
+        legsMovement.legs.SetActive(false);
+        armsMovement.arms.SetActive(false);
+        torso.torso.SetActive(false);
+
         
         headMovement.enabled = true;
         legsMovement.enabled = false;
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
             switch (partsCollected)
             {
                 case 1:
+                    playerRb.angularDrag = 1f;
                     headMovement.enabled = false;
                     legsMovement.enabled = true;
                     break;
