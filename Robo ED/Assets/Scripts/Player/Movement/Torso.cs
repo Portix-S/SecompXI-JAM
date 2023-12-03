@@ -12,8 +12,9 @@ public class Torso : MonoBehaviour
     private LegsMovement legsRef;
 
     [SerializeField] private Transform newLegsPos;
+    [SerializeField] private float normalG = 9.81f, floatG = 4.9f;
+    private static readonly int IsFloating = Animator.StringToHash("isFloating");
 
-    [SerializeField] private float normalG = 9.81f, floatG = 4.9f; 
     private void Start() {
         torsoAnimator = torso.GetComponent<Animator>();
 
@@ -32,10 +33,12 @@ public class Torso : MonoBehaviour
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space) && !legsRef.isGrounded){
             rb.gravityScale = floatG;
+            torsoAnimator.SetBool(IsFloating, true);
         }
 
-        if(Input.GetKeyUp(KeyCode.Space)){
+        if(Input.GetKeyUp(KeyCode.Space) || legsRef.isGrounded){
             rb.gravityScale = normalG;
+            torsoAnimator.SetBool(IsFloating, false);
         }
         
     }
