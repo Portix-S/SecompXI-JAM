@@ -49,11 +49,10 @@ public class GameManager : MonoBehaviour
         armsMovement = player.GetComponent<ArmsMovement>();
         torso = player.GetComponent<Torso>();
 
-        headMovement.head.SetActive(true);
-        legsMovement.legs.SetActive(false);
-        armsMovement.arms.SetActive(false);
-        torso.torso.SetActive(false);
-
+        // headMovement.head.SetActive(true);
+        // legsMovement.legs.SetActive(false);
+        // armsMovement.arms.SetActive(false);
+        // torso.torso.SetActive(false);
         
         headMovement.enabled = true;
         legsMovement.enabled = false;
