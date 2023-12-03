@@ -226,7 +226,7 @@ MonoBehaviour:
   torso: {fileID: 6695032775146514353}
   newLegsPos: {fileID: 7200447654842622249}
   normalG: 9.81
-  floatG: 1
+  floatG: 0.5
 --- !u!114 &8760325425787677510
 MonoBehaviour:
   m_ObjectHideFlags: 0
