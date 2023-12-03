@@ -371,6 +371,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &400438376 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8724290255489431215, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+  m_PrefabInstance: {fileID: 64020726993424301}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &704333512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1490,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 402435301708944982, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775947237814164870, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1493,10 +1502,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1326786194529526533, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326786194529526533, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675532517767116698, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: bodySprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675532517767116698, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: bodySprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 400438376}
     - target: {fileID: 2754508598460801593, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
       propertyPath: respawnPosition
       value: 
       objectReference: {fileID: 332525618}
+    - target: {fileID: 5193587157564396350, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5840335600760595052, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1543,11 +1572,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6695032775146514353, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7138322543081722974, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609555849238451326, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9056997636904391378, guid: d7c97e54d399f2018bb5a62781383092, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform

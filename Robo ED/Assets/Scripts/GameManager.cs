@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -29,6 +30,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
         player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
+
+        Transform cam = player.transform.Find("PlayerFollow").transform;
+        Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
+        Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().Follow = cam;
+
         player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
 
         headMovement = player.GetComponent<HeadMovement>();
