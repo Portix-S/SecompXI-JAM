@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
         player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
 
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+
         Transform cam = player.transform.Find("PlayerFollow").transform;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().Follow = cam;
@@ -119,9 +121,14 @@ public class GameManager : MonoBehaviour
                     break;
                 case 2:
                     //legsMovement.jumpForce *= 1.2f;
+                    headMovement.enabled = false;
+                    legsMovement.enabled = true;
                     torso.enabled = true;
                     break;
                 case 3:
+                    headMovement.enabled = false;
+                    legsMovement.enabled = true;
+                    torso.enabled = true;
                     armsMovement.enabled = true;
                     break;
             }

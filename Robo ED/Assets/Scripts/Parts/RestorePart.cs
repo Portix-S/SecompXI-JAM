@@ -13,7 +13,7 @@ public class RestorePart : MonoBehaviour
         _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && !hasRestored)
         {
