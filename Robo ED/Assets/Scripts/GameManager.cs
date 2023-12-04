@@ -64,15 +64,18 @@ public class GameManager : MonoBehaviour
         armsMovement.enabled = false;
         torso.enabled = false;
         UpdateParts();
-
-       
     }
 
     private void Warmup(Scene scene, LoadSceneMode loadMode){
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        if(currentScene > 3){
+            SceneManager.sceneLoaded -= Warmup;
+            Destroy(this.gameObject);
+        }
+
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
         player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
 
-        currentScene = SceneManager.GetActiveScene().buildIndex;
 
         Transform cam = player.transform.Find("PlayerFollow").transform;
         Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().LookAt = cam;
