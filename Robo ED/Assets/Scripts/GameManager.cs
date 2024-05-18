@@ -1,17 +1,32 @@
 //using System;
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using Timer = System.Timers.Timer;
 using Update = Unity.VisualScripting.Update;
 using Vector2 = System.Numerics.Vector2;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Timer Settings")]
+    [SerializeField] private float gameTimer = 0f;
+    [SerializeField] private TextMeshProUGUI timerText;
+    private bool timerActive = false;
+    [SerializeField] GameObject leaderboard;
+    [SerializeField] GameObject endScreen;
+    
+
+
+    [Header("Other Settings")]
+    
     [SerializeField] private GameObject playerPrefab;
     private GameObject player;
     [SerializeField] private Transform initialPos;
@@ -32,8 +47,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        timerText = GameObject.FindGameObjectWithTag("GameTimer").GetComponent<TextMeshProUGUI>();
+        timerActive = true;
         SceneManager.sceneLoaded += Warmup;
-        
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
         player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
 
@@ -66,12 +82,28 @@ public class GameManager : MonoBehaviour
         UpdateParts();
     }
 
-    private void Warmup(Scene scene, LoadSceneMode loadMode){
+     
+    private void Warmup(Scene scene, LoadSceneMode loadMode)
+    {
         currentScene = SceneManager.GetActiveScene().buildIndex;
-        if(currentScene > 3){
-            SceneManager.sceneLoaded -= Warmup;
-            Destroy(this.gameObject);
+        if(currentScene >= SceneManager.sceneCountInBuildSettings - 1)
+        {
+            if(timerText == null)
+                timerText = GameObject.FindGameObjectWithTag("GameTimer").GetComponent<TextMeshProUGUI>();
+            timerText.text = "";
+            Debug.Log("passou");
+            if (endScreen == null)
+            {
+                Helper help = GameObject.FindGameObjectWithTag("EndScreen").GetComponent<Helper>();
+                endScreen = help.child;
+                leaderboard = help.leaderboard;
+            }
+
+            endScreen.SetActive(true);
+            leaderboard.GetComponent<LeaderboardHandler>().SetTimer(gameTimer);
         }
+        if (!timerActive) return;
+
 
         initialPos = GameObject.FindGameObjectWithTag("Spawn").transform;
         player = Instantiate(playerPrefab, initialPos.position, initialPos.rotation);
@@ -84,7 +116,6 @@ public class GameManager : MonoBehaviour
         Transform rotationSource = GameObject.FindGameObjectWithTag("Constraint").transform;
         rotationConstraint.AddSource(new ConstraintSource() {sourceTransform = rotationSource, weight = 1});
         
-        playerRb = player.GetComponent<Rigidbody2D>();
         player.GetComponent<PlayerManager>().UpdateRespawnPosition(initialPos);
         playerRb = player.GetComponent<Rigidbody2D>();
 
@@ -102,8 +133,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        rbVelocity = playerRb.velocity.x;
-        parallaxSpeed = rbVelocity * .001f;
+        if(timerActive)
+        {
+            rbVelocity = playerRb.velocity.x;
+            parallaxSpeed = rbVelocity * .001f;
+            gameTimer += Time.deltaTime;
+            // Show timer as minutes, seconds and milliseconds 
+            int miliseconds = ((int)(gameTimer * 100) % 100);
+            int seconds = ((int)gameTimer % 60);
+            int minutes = ((int)gameTimer / 60);
+            timerText.text = string.Format("{0:00}:{1:00}:{2:0}", minutes, seconds, miliseconds);
+            // timerText.text = string.Format("{0:00}:{1:00}:{10:00}", minutes, seconds, miliseconds);
+
+        }
+        
+        // if(Input.GetKeyDown(KeyCode.P))
+        //     ChangeScene();
     }
 
     public void RestorePart()
@@ -141,7 +186,22 @@ public class GameManager : MonoBehaviour
     public void ChangeScene()
     {
         currentScene++;
+        if (currentScene >= SceneManager.sceneCountInBuildSettings - 1)
+        {
+            timerActive = false;
+        }
+
         // Add Animation?
         SceneManager.LoadScene(currentScene);
+        
     }
+    
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        currentScene = 0;
+        Destroy(timerText.transform.parent.gameObject);
+        Destroy(endScreen.transform.parent.gameObject);  
+        Destroy(this.gameObject);
+    }    
 }

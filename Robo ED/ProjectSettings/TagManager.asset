@@ -10,6 +10,9 @@ TagManager:
   - Trap
   - Spawn
   - Constraint
+  - Leaderboard
+  - GameTimer
+  - EndScreen
   layers:
   - Default
   - TransparentFX
